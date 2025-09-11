@@ -25,7 +25,9 @@ export default function Home() {
   }
 
   function handleCellClick(rowIndex: number, colIndex: number){
-    
+    let newBoard = [...board];
+    newBoard[rowIndex][colIndex] +=1;
+    setBoard(newBoard);
   }
   return(
     <div className={styles.gameContainer}>

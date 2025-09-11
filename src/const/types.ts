@@ -3,7 +3,7 @@ export interface attack{
     rarity: number,
     numDice: number,
     dice: number,
-    hitchance: number,
+    hitChance: number,
     range: number,
     effect: effect
 }
@@ -24,6 +24,8 @@ export interface player{
 
 export interface classs{
     name: string,
-    attack: attack[],
-    currentAttack: attack[]
+    image: string,
+    movement: number,
+    attacks: attack[][],
+    currentAttacks: attack[]
 }
