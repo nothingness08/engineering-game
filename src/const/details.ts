@@ -7,7 +7,7 @@ const rarityConvert: Array<string> = [
     "Legendary"
 ]
 
-const monkAttack: Array<Array<attack>> = [
+const fighterAttack: Array<Array<attack>> = [
     //Rarity 0
     [
         {
@@ -61,10 +61,10 @@ const monkAttack: Array<Array<attack>> = [
     ]
 ]
 
-export const monkClass: classs = {
+export const fighterClass: classs = {
     name: "Monk",
     image: "#6F4E37",
     movement: 1,
-    attacks: monkAttack,
-    currentAttacks: monkAttack[0],
+    attacks: fighterAttack,
+    currentAttacks: fighterAttack[0],
 }

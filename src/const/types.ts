@@ -19,7 +19,8 @@ export interface effect{
 
 export interface player{
     health: number,
-    class: classs
+    class: classs,
+    position: number[];
 }
 
 export interface classs{
