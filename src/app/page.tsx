@@ -4,12 +4,22 @@ import styles from "../styles/page.module.css";
 import { player } from "../const/types";
 import { fighterClass } from "../const/details";
 const GRIDSIZE = 5;
+const GREY = "#808080";
+
+function isNextTo(playerPos: number[], tile: number[]): boolean {
+  const [playerX, playerY] = playerPos;
+  const [tileX, tileY] = tile;
+
+  const dx = Math.abs(playerX - tileX);
+  const dy = Math.abs(playerY - tileY);
+
+  return dx + dy === 1;
+}
 
 export default function Home() {
   const [board, setBoard] = useState(
     Array(GRIDSIZE).fill(null).map(() => Array(GRIDSIZE).fill(null))
   );
-  const [tileColor, setTileColor] = useState("");
   const [playerArr, setPlayerArr] = useState<player[]>([]);
 
   useEffect(() => {
@@ -27,38 +37,46 @@ export default function Home() {
     const player1: player = {
       health: 10,
       class: fighterClass,
-      position: [0,0]
+      position: [0,0],
+      isMoving: false
     } 
     setPlayerArr([player1]);
   }
 
   function handleCellClick(rowIndex: number, colIndex: number){
+    playerArr.forEach((p) => {
+
+    })
     let newBoard = [...board];
     newBoard[rowIndex][colIndex] +=1;
     setBoard(newBoard);
   }
+
+  if(!playerArr[0]){return(<div></div>)}
   return(
     <div className={styles.gameContainer}>
       <div className={styles.board}>
       {board.map((row, rowIndex) =>
         row.map((cell, colIndex) => {
-          // {
-          //   setTileColor("white");
-          //   playerArr.forEach((p) => {
-          //     if(p.position[0] === rowIndex && p.position[1] === colIndex){
-          //       setTileColor(p.class.image)
-          //     }
-          //   })
-          // }
+            let tileColor = "white";
+            let pTile;
+            playerArr.forEach((p) => {
+              if(p.position[0] === rowIndex && p.position[1] === colIndex){
+                tileColor = p.class.color;
+              }
+              if(isNextTo(p.position, [rowIndex, colIndex]) ){
+                tileColor = GREY;
+              }
+            })
           return(
             <button
               className={styles.cell}
               key={`${rowIndex}-${colIndex}`}
               onClick={() => handleCellClick(rowIndex, colIndex)}
               style={{
-                backgroundColor: playerArr[0].class.image
+                backgroundColor: tileColor
               }}
-            >{board[rowIndex][colIndex]}</button>
+            >{cell}</button>
           )
         })
       )}

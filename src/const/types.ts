@@ -20,12 +20,13 @@ export interface effect{
 export interface player{
     health: number,
     class: classs,
-    position: number[];
+    position: number[],
+    isMoving: boolean
 }
 
 export interface classs{
     name: string,
-    image: string,
+    color: string,
     movement: number,
     attacks: attack[][],
     currentAttacks: attack[]
