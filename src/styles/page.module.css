@@ -1,4 +1,4 @@
-.gameContainer {
+.gridContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -6,10 +6,14 @@
   height: 100vh;
 }
 
+.gameContainer{
+  flex-direction: row;
+}
+
 .board {
   display: grid;
-  grid-template-columns: repeat(5, 60px); 
-  gap: 10px; 
+  grid-template-columns: repeat(8, 60px); 
+  gap: 5px; 
 }
 
 .cell {
@@ -20,4 +24,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.sideBar{
+  width: 50px;
+  height: 100px;
+  border: 2px solid #181414;
 }

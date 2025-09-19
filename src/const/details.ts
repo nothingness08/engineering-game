@@ -64,7 +64,7 @@ const fighterAttack: Array<Array<attack>> = [
 export const fighterClass: classs = {
     name: "Monk",
     color: "#6F4E37",
-    movement: 1,
+    movement: 3,
     attacks: fighterAttack,
     currentAttacks: fighterAttack[0],
 }
